@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#080d18">
+<title>CYBER LINK — Bluetooth Messenger</title>
+<style>
+:root{color-scheme:dark;--bg:#080d18;--panel:#101a2b;--panel2:#0c1422;--line:#20334c;--cyan:#27e6ff;--blue:#548cff;--green:#38e6a4;--muted:#91a5bf;--white:#edf7ff}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 15% 0%,#102943 0,transparent 35%),var(--bg);color:var(--white);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif}
+header{padding:22px clamp(16px,4vw,48px);border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.brand{display:flex;align-items:center;gap:12px;font-weight:900;letter-spacing:2px}.logo{width:42px;height:42px;border:1px solid var(--cyan);border-radius:13px;display:grid;place-items:center;color:var(--cyan);font-size:22px;box-shadow:0 0 22px #27e6ff30}
+.status{color:var(--green);font-size:13px}.wrap{max-width:1180px;margin:30px auto;padding:0 16px;display:grid;grid-template-columns:300px 1fr;gap:18px}
+.panel{background:linear-gradient(160deg,#132138,#0d1625);border:1px solid var(--line);border-radius:20px;overflow:hidden;box-shadow:0 18px 55px #0005}
+.sidehead,.chathead{padding:18px 20px;border-bottom:1px solid var(--line)}h1,h2,p{margin:0}h1{font-size:clamp(25px,4vw,38px);letter-spacing:1px}h2{font-size:16px}.sub{color:var(--muted);font-size:13px;margin-top:5px}
+.peer{padding:16px 18px;border-bottom:1px solid #1c2b40;display:flex;align-items:center;gap:12px}.avatar{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;background:#173d55;color:var(--cyan);font-weight:800}.peer small{display:block;color:var(--muted)}.online{margin-left:auto;width:8px;height:8px;background:var(--green);border-radius:50%}
+.chathead{display:flex;justify-content:space-between;align-items:center;gap:12px}.chatbody{padding:22px;min-height:330px;background:linear-gradient(#0b1421d9,#0b1421d9),radial-gradient(circle at 70% 10%,#16435a,transparent 55%)}
+.bubble{max-width:min(78%,520px);padding:12px 15px;margin:12px 0;border:1px solid #25415a;background:#14243a;border-radius:15px 15px 15px 4px}.bubble.me{margin-left:auto;background:#103447;border-color:#176078;border-radius:15px 15px 4px 15px}.time{display:block;color:#8ca6bd;font-size:11px;text-align:right;margin-top:5px}
+.compose{display:flex;gap:10px;padding:16px;border-top:1px solid var(--line)}input{min-width:0;flex:1;background:#091321;border:1px solid #29415c;border-radius:12px;padding:13px;color:white;font:inherit;outline:none}input:focus{border-color:var(--cyan)}
+button,.btn{border:0;border-radius:12px;padding:12px 17px;background:linear-gradient(100deg,#1bcde8,#557cff);color:#04111c;font-weight:850;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;justify-content:center;gap:8px}button:hover,.btn:hover{filter:brightness(1.12)}.btn.secondary{background:#14263b;border:1px solid #31516d;color:var(--white)}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.download{margin:0 auto 30px;max-width:1180px;padding:0 16px}.downloadbox{padding:22px;border:1px solid #1c7182;background:linear-gradient(110deg,#102a3b,#101a2b);border-radius:20px;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}.downloadbox p{color:var(--muted);font-size:13px;margin-top:5px}.download-actions{display:flex;gap:10px;flex-wrap:wrap}
+.guide{max-width:1180px;margin:0 auto 50px;padding:0 16px}.guide details{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:18px 20px}.guide summary{cursor:pointer;font-weight:800;color:var(--cyan)}.guide ol{color:#c3d3e5;padding-left:22px}.guide li{margin:9px 0}.note{color:var(--muted);font-size:12px;margin-top:14px}
+@media(max-width:760px){.wrap{grid-template-columns:1fr}.chatbody{min-height:280px}.side{order:2}.mainchat{order:1}}
+</style>
+</head>
+<body>
+<header><div class="brand"><div class="logo">⌁</div><div>CYBER LINK<div class="sub">PRIVATE • OFFLINE • BLUETOOTH</div></div></div><div class="status">● Lokale UI-Vorschau</div></header>
+<main class="wrap">
+<aside class="panel side"><div class="sidehead"><h2>Kontakte</h2><div class="sub">Bluetooth-Geräte und Chats</div></div>
+<div class="peer"><div class="avatar">CY</div><div><b>Cyber Device</b><small>Demo-Kontakt</small></div><span class="online"></span></div>
+<div class="peer"><div class="avatar">A</div><div><b>Alex</b><small>Zuletzt gesehen: lokal</small></div></div>
+<div class="peer"><div class="avatar">M</div><div><b>Max</b><small>Noch nicht verbunden</small></div></div>
+<div class="sidehead"><h2>Bluetooth</h2><div class="sub">Gerätestatus: Vorschau – keine echte Funkverbindung</div><div class="actions"><button class="btn secondary" onclick="alert('Bluetooth wird durch die native Android-App gesteuert.')">Geräte suchen</button></div></div>
+</aside>
+<section class="panel mainchat"><div class="chathead"><div><h2>Cyber Device</h2><div class="sub">Demo-Unterhaltung</div></div><div class="status">● UI bereit</div></div>
+<div class="chatbody" id="messages"><div class="bubble">Willkommen bei CYBER LINK!<span class="time">System • Vorschau</span></div><div class="bubble me">Privat chatten – auch ohne Internet.<span class="time">Du • Vorschau</span></div><div class="bubble">Diese HTML zeigt das Design. Für echte Nachrichten muss die Android-Bluetooth-Schnittstelle verbunden werden.<span class="time">System • Vorschau</span></div></div>
+<form class="compose" id="sendForm"><input id="messageInput" placeholder="Nachricht schreiben …" autocomplete="off"><button type="submit">Senden ➤</button></form>
+</section></main>
+<section class="download"><div class="downloadbox"><div><h2>CYBER LINK herunterladen</h2><p>Projektdateien als ZIP von GitHub herunterladen. Die Anleitung findest du direkt darunter.</p></div><div class="download-actions"><a class="btn" href="https://github.com/cyberchatx/CYBER-LINK/archive/refs/heads/main.zip">⬇ Projekt-ZIP herunterladen</a><a class="btn secondary" href="https://github.com/cyberchatx/CYBER-LINK">GitHub öffnen ↗</a></div></div></section>
+<section class="guide"><details open><summary>📘 Anleitung: Download, Installation und erster Start</summary><ol>
+<li>Tippe auf <b>Projekt-ZIP herunterladen</b>. Android speichert die ZIP-Datei normalerweise im Ordner „Downloads“.</li>
+<li>Öffne die Dateien-App, gehe zu „Downloads“ und entpacke die ZIP-Datei.</li>
+<li>Öffne den entpackten Ordner. Die Projektdateien sind der Quellcode – sie sind nicht automatisch eine installierbare Android-App.</li>
+<li>Für eine APK muss das Android-Projekt mit Android/Gradle gebaut werden. Eine veröffentlichte APK findest du nur dann unter „Releases“, wenn dort tatsächlich ein Release bereitgestellt wurde.</li>
+<li>Wenn du eine APK aus einer vertrauenswürdigen Quelle installierst, öffne sie und erlaube Android bei Bedarf die Installation aus dieser Quelle.</li>
+<li>Für die Verbindung: aktiviere Bluetooth auf beiden Android-Geräten, erteile der App die angeforderten Bluetooth-Berechtigungen und starte die Gerätesuche in der nativen App. Bestätige eine angezeigte Kopplungsanfrage auf beiden Geräten.</li>
+</ol><p class="note">Wichtig: Diese Seite ist eine HTML-Oberflächenvorschau. Die Schaltfläche lädt den Quellcode des öffentlichen Repositories herunter, nicht automatisch eine APK. Chat, Bluetooth, Anrufe und Geräteerkennung funktionieren erst, wenn sie in der Android-App implementiert und mit dieser Oberfläche verbunden sind. Die Kommunikation der App bleibt davon unabhängig lokal und Bluetooth-basiert.</p></details></section>
+<script>
+const form=document.getElementById('sendForm'),input=document.getElementById('messageInput'),messages=document.getElementById('messages');
+form.addEventListener('submit',e=>{e.preventDefault();const value=input.value.trim();if(!value)return;const bubble=document.createElement('div');bubble.className='bubble me';bubble.textContent=value;const time=document.createElement('span');time.className='time';time.textContent='Du • lokale Vorschau';bubble.appendChild(time);messages.appendChild(bubble);input.value='';messages.scrollTop=messages.scrollHeight;});
+</script>
+</body></html>
