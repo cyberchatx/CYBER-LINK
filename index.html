@@ -143,11 +143,21 @@ p {
   margin: 15px 0;
   box-shadow: 0 0 15px #00d9ef66;
   transition: .3s;
+  border: none;
+  width: 100%;
+  font-size: 15px;
+  cursor: pointer;
 }
 
 .btn:hover {
   transform: scale(1.04);
   box-shadow: 0 0 30px #00d9ef;
+}
+
+.btn:disabled {
+  opacity: 0.6;
+  cursor: wait;
+  transform: none;
 }
 
 .btn.secondary {
@@ -202,12 +212,20 @@ footer {
       ANDROID VERSION 3.2
     </div>
 
-    <a class="btn"
-       href="https://github.com/cyberchatx/CYBER-LINK/releases/latest">
+    <!-- DIREKTER APK DOWNLOAD -->
 
-       ⬇ ANDROID APK DOWNLOAD
+    <button
+      class="btn"
+      id="downloadButton"
+      type="button"
+      disabled
+    >
+      APK wird gesucht ...
+    </button>
 
-    </a>
+    <p id="downloadStatus" class="small">
+      Suche die neueste Android-APK ...
+    </p>
 
     <p>
       Lade die neueste Android-Version
@@ -261,6 +279,70 @@ footer {
 <footer>
   CYBER LINK V3.2 · ANDROID ONLY
 </footer>
+
+<script>
+const downloadButton =
+  document.getElementById("downloadButton");
+
+const downloadStatus =
+  document.getElementById("downloadStatus");
+
+const GITHUB_API =
+  "https://api.github.com/repos/cyberchatx/CYBER-LINK/releases/latest";
+
+async function findLatestAPK() {
+  try {
+    const response = await fetch(GITHUB_API, {
+      headers: {
+        "Accept": "application/vnd.github+json"
+      },
+      cache: "no-store"
+    });
+
+    if (!response.ok) {
+      throw new Error("Release konnte nicht geladen werden.");
+    }
+
+    const release = await response.json();
+
+    const apk = release.assets.find(asset =>
+      asset.name.toLowerCase().endsWith(".apk")
+    );
+
+    if (!apk) {
+      throw new Error("Keine APK im neuesten Release gefunden.");
+    }
+
+    downloadButton.disabled = false;
+    downloadButton.textContent =
+      "⬇ CYBER LINK APK DIREKT HERUNTERLADEN";
+
+    downloadStatus.textContent =
+      "Gefunden: " + apk.name +
+      " · Version: " + release.tag_name;
+
+    downloadButton.addEventListener("click", () => {
+      const link = document.createElement("a");
+      link.href = apk.browser_download_url;
+      link.download = apk.name;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+    });
+
+  } catch (error) {
+    downloadButton.disabled = true;
+    downloadButton.textContent =
+      "APK momentan nicht verfügbar";
+
+    downloadStatus.textContent =
+      error.message +
+      " Bitte prüfe, ob im GitHub-Release eine APK veröffentlicht ist.";
+  }
+}
+
+findLatestAPK();
+</script>
 
 </body>
 </html>
